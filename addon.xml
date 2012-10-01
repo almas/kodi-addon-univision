@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<addon id="plugin.video.univision"
+       name="Univision Anywhere"
+       version="1.0"
+       provider-name="Hashiname">
+  <requires>
+    <import addon="xbmc.python" version="2.1.0"/>
+  </requires>
+  <extension point="xbmc.python.pluginsource"
+            library="default.py">
+        <provides>video</provides>
+  </extension>
+  <extension point="xbmc.addon.metadata">
+    <platform>all</platform>
+    <summary>Univision TV plugin</summary>
+    <description>Plugin to watch Univision Anywhere IPTV. You will need a login credential that can be obtained here http://my.univision.mn/index.php/register</description>
+    <disclaimer>It is a third-party addon that is not affiliated with Univision Anywhere in any way. The provider is not responsible for any issues caused by using this addon.</disclaimer>
+  </extension>
+</addon>
