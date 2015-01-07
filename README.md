@@ -7,7 +7,7 @@ Plugin to watch Univision Anywhere IPTV on kodi. You will need a login credentia
 The addon provider is not responsible for any issues caused by using this addon. In addition, it is a third-party addon that is not affiliated with Univision Anywhere in any way.
 
 ### Installation
-Install hashiname repository which provides this plugin installation. Afterwards, install Univision Anywhere IPTV addon from the kodi menu: Videos -> Video Add-ons -> Get More... -> Univision Anywhere -> Install.
+Install [hashiname repository](https://github.com/hasherdene/kodi-repo-hashiname) which provides this plugin installation. Afterwards, install Univision Anywhere IPTV addon from the kodi menu: Videos -> Video Add-ons -> Get More... -> Univision Anywhere -> Install.
 
 ### Watch
 kodi menu: Videos -> Video Add-ons -> Univision Anywhere.
