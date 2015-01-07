@@ -5,6 +5,6 @@
         <setting label="Password" type="text" id="password" option="hidden"  enable="!eq(-1,)" default=""/>
     </category>
     <category label="Additional">
-        <setting label="Bitrate" type="enum" id="bitrate" values="1200Kb|750Kb|500Kb"/>
+        <setting label="Bitrate" type="enum" id="bitrate" values="1200Kb|750Kb|500Kb" default="0"/>
     </category>
 </settings>
