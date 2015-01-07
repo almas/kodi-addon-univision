@@ -16,4 +16,9 @@
     <description>Plugin to watch Univision Anywhere IPTV. You will need a login credential that can be obtained here http://my.univision.mn/index.php/register</description>
     <disclaimer>It is a third-party addon that is not affiliated with Univision Anywhere in any way. The provider is not responsible for any issues caused by using this addon.</disclaimer>
   </extension>
+  <extension point="xbmc.addon.repository" name="Hashiname Add-on Repository">
+      <info>https://raw.githubusercontent.com/hasherdene/kodi-repo-hashiname/master/addons.xml</info>
+      <checksum>https://raw.githubusercontent.com/hasherdene/kodi-repo-hashiname/master/addons.xml.md5</checksum>
+      <datadir zip="true">https://raw.githubusercontent.com/hasherdene/kodi-repo-hashiname/master/datadir</datadir>
+  </extension>
 </addon>

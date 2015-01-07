@@ -1,4 +1,4 @@
-"""XBMC video addon to watch univision tv."""
+"""kodi video addon to watch univision tv."""
 
 import sys
 import urllib2
@@ -122,18 +122,18 @@ def fetch_channels(cid=None):
 
 
 def list_channels(sid):
-    """show channels on the xbmc list."""
+    """show channels on the kodi list."""
     for ch in fetch_channels():
         url = build_url(
             {'mode': 'channel', 'cid': ch.cid, 'sid': sid})
         iconurl = "http://tv.univision.mn/uploads/tv/%s.png" % ch.iconurl
+        current_show = 'No information'
+        if ch.current is not None:
+            current_show = ch.current[14:].strip(': ')
         litem = xbmcgui.ListItem(
-            '[%s]   %s' % (
-                ch.title,
-                'No information' if ch.current is None else ch.current[14:].strip(': ')),
+            '[%s]   %s' % (ch.title, current_show),
             iconImage=iconurl,
-            thumbnailImage=iconurl
-            )
+            thumbnailImage=iconurl)
         xbmcplugin.addDirectoryItem(
             handle=HANDLE, url=url, listitem=litem, isFolder=True)
     xbmcplugin.endOfDirectory(
@@ -141,7 +141,7 @@ def list_channels(sid):
 
 
 def list_programs(cid, sid):
-    """show tv programs on the xbmc list."""
+    """show tv programs on the kodi list."""
     selected = fetch_channels(cid)
     iconurl = "http://tv.univision.mn/uploads/tv/%s.png" % selected.iconurl
     url = build_url({'mode': 'play', 'cid': cid, 'sid': sid})
@@ -156,8 +156,8 @@ def list_programs(cid, sid):
         todt(selected.program[start:start + 5], GMT8()),
         todt(selected.program[end:end + 5]
              if end < len(selected.program) else '23:59', GMT8()),
-        selected.program[start + 5:end].strip(': ')) for start, end in zip(
-            starts, starts[1:] + [len(selected.program)])]
+        selected.program[start + 5:end].strip(': '))
+        for start, end in zip(starts, starts[1:] + [len(selected.program)])]
 
     for prg in programs:
         now = datetime.now(GMT8())
