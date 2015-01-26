@@ -10,4 +10,4 @@ The addon provider is not responsible for any issues caused by using this addon.
 Install [hashiname repository](https://github.com/hasherdene/kodi-repo-hashiname) which provides this plugin installation. Afterwards, install Univision Anywhere IPTV addon from the kodi menu: Videos -> Video Add-ons -> Get More... -> Univision Anywhere -> Install.
 
 ### Watch
-kodi menu: Videos -> Video Add-ons -> Univision Anywhere.
+From the kodi main menu: Videos -> Video Add-ons -> Univision Anywhere. Fill in the user settings and bitrate. Go into the channel and click on [Watch] ... .
