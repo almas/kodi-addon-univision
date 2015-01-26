@@ -11,3 +11,14 @@ Install [hashiname repository](https://github.com/hasherdene/kodi-repo-hashiname
 
 ### Watch
 From the kodi main menu: Videos -> Video Add-ons -> Univision Anywhere. Fill in the user settings and bitrate. Go into the channel and click on [Watch] ... .
+
+### Screenshots
+![Main Screen](http://hasherdene.github.io/kodi-repository-hashiname/images/main_screen.jpg)
+
+![Plugin List](http://hasherdene.github.io/kodi-repository-hashiname/images/plugin_list.jpg)
+
+![Channel List](http://hasherdene.github.io/kodi-repository-hashiname/images/channel_list.jpg)
+
+![Program List](http://hasherdene.github.io/kodi-repository-hashiname/images/program_list.jpg)
+
+![View Screen](http://hasherdene.github.io/kodi-repository-hashiname/images/view_screen.jpg)
