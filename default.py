@@ -19,18 +19,18 @@ import xbmcplugin
 import xbmcgui
 import xbmc
 
-def internet_on():
-    try:
-        response=urllib2.urlopen('http://tv.univision.mn',timeout=5)
-        return True
-    except urllib2.URLError as err: pass
-    return False
+#def internet_on():
+    #try:
+        #response=urllib2.urlopen('http://tv.univision.mn',timeout=5)
+        #return True
+    #except urllib2.URLError as err: pass
+    #return False
 
-if not internet_on():
-    import socks
-    import socket
-    socks.setdefaultproxy(socks.PROXY_TYPE_SOCKS5, "127.0.0.1", 9050)
-    socket.socket = socks.socksocket
+#if not internet_on():
+    #import socks
+    #import socket
+    #socks.setdefaultproxy(socks.PROXY_TYPE_SOCKS5, "127.0.0.1", 9050)
+    #socket.socket = socks.socksocket
     
 
 UNIVISION_TITLE = 'Univision Anywhere'
@@ -245,11 +245,7 @@ def list_programs(cid, sid, progdate=False):
     
     else:
 
-        cookiepath=os.getcwd()
-         #check if user has supplied only a folder path, or a full path
-        if not os.path.isfile(cookiepath):
-            #if the user supplied only a folder path, append on to the end of the path a common filename.
-            cookiepath = os.path.join(cookiepath,'cookies.lwp')
+        cookiepath = get_cookie_path()
     
         #check that the cookie exists
         if os.path.exists(cookiepath):
@@ -313,9 +309,42 @@ def list_programs(cid, sid, progdate=False):
             handle=HANDLE, succeeded=True, cacheToDisc=False)
 
 
+#def touch(fname, mode=0o666, dir_fd=None, **kwargs):
+    #flags = os.O_CREAT | os.O_APPEND
+    #with os.fdopen(os.open(fname, flags=flags, mode=mode, dir_fd=dir_fd)) as f:
+        #os.utime(f.fileno() if os.utime in os.supports_fd else fname,
+            #dir_fd=None if os.supports_fd else dir_fd, **kwargs)
 
+def touch(fname, times=None):
+    fhandle = open(fname, 'a')
+    try:
+        os.utime(fname, times)
+    finally:
+        fhandle.close()
+        
+def get_cookie_path():
 
-
+    
+    __addon__        = xbmcaddon.Addon()
+    __addonname__    = __addon__.getAddonInfo('id')
+    __addonversion__ = __addon__.getAddonInfo('version')
+    __addonpath__    = __addon__.getAddonInfo('path').decode('utf-8')
+    __addonicon__    = xbmc.translatePath('%s/icon.png' % __addonpath__ )
+    __language__     = __addon__.getLocalizedString
+    
+    cookiedir = xbmc.translatePath('special://profile/addon_data/%s' % __addonname__ ).decode('utf-8')
+    if not os.access(cookiedir, os.W_OK):
+        cookiedir = os.getcwd()
+        if not os.access(cookiedir, os.W_OK):
+            cookiedir = '/tmp'
+            if not os.access(cookiedir, os.W_OK):
+                cookiedir = '~'
+                if not os.access(cookiedir, os.W_OK):
+                    cookiedir = './'
+    
+    cookiepath = os.path.join(cookiedir, 'cookies.lwp')
+    
+    return cookiepath
 
 
 
@@ -424,11 +453,7 @@ def login():
         if found is not None:
             
             
-            cookiepath=os.getcwd()
-            #check if user has supplied only a folder path, or a full path
-            if not os.path.isfile(cookiepath):
-                #if the user supplied only a folder path, append on to the end of the path a filename.
-                cookiepath = os.path.join(cookiepath,'cookies.lwp')
+            cookiepath = get_cookie_path()
                 
             #delete any old version of the cookie file
             try:
